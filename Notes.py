@@ -6,7 +6,6 @@ from datetime import datetime
 NOTES_FILE = "notes.json"
 
 def load_notes():
-    """Загрузка заметок из файла."""
     if os.path.exists(NOTES_FILE):
         with open(NOTES_FILE, "r") as file:
             return json.load(file)
@@ -17,8 +16,7 @@ def save_notes(notes):
     with open(NOTES_FILE, "w") as file:
         json.dump(notes, file, indent=4)
 
-def create_note(title, body):
-    """Создание новой заметки."""
+def create_note(title, body)
     notes = load_notes()
     note = {
         "id": len(notes) + 1,
@@ -31,7 +29,6 @@ def create_note(title, body):
     print(f"Заметка с ID {note['id']} создана.")
 
 def read_notes():
-    """Чтение всех заметок."""
     notes = load_notes()
     for note in notes:
         print(f"ID: {note['id']}, Заголовок: {note['title']}, Дата: {note['timestamp']}")
@@ -39,7 +36,6 @@ def read_notes():
         print("-" * 30)
 
 def edit_note(note_id, new_title, new_body):
-    """Редактирование существующей заметки."""
     notes = load_notes()
     for note in notes:
         if note['id'] == note_id:
@@ -52,7 +48,6 @@ def edit_note(note_id, new_title, new_body):
     print(f"Заметка с ID {note_id} не найдена.")
 
 def delete_note(note_id):
-    """Удаление заметки."""
     notes = load_notes()
     for note in notes:
         if note['id'] == note_id:
